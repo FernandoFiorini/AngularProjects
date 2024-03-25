@@ -1,0 +1,60 @@
+<div class="music-card">
+
+    <div class="container-card">
+
+
+        <div class="header">
+            <div class="botao-topo">
+                <mat-icon aria-hidden="false" fontIcon="share"></mat-icon>
+            </div>
+            <div class="botao-topo">
+                <mat-icon aria-hidden="false" fontIcon="playlist_add"></mat-icon>
+            </div>
+        </div>
+
+        <div class="imagem-musica">
+            <img src="../../assets/MusicCard/music1.jpg">
+        </div>
+
+        <div class="infos">
+            <div class="titulo">Lofi Study</div>
+            <div class="banda">FasSounds</div>
+        </div>
+
+        <div class="music-spinner">
+            <audio [src]="currentMusic" id="player"></audio>
+            <progress #seekbar id="seekbar" value="0" max="1" style="width:400px;"
+                timeupdate="atualizarProgresso()"></progress>
+
+               
+        </div>
+
+        <div id="tempo">tempo</div>
+
+        <div class="footer">
+            <div class="botao-lateral repetir">
+                <mat-icon aria-hidden="false" fontIcon="shuffle"></mat-icon>
+            </div>
+            <div class="container-botoes">
+                <div class="botao-footer change-music" (click)="previousMusic()">
+                    <mat-icon aria-hidden="false" fontIcon="skip_previous"></mat-icon>
+                </div>
+                <div class="botao-footer play" (click)="playMusic()">
+                    <mat-icon aria-hidden="false" [fontIcon]="musicPlaying ? 'pause' : 'play_arrow'"></mat-icon>
+                </div>
+                <div class="botao-footer change-music" (click)="nextMusic()">
+                    <mat-icon aria-hidden="false" fontIcon="skip_next"></mat-icon>
+                </div>
+            </div>
+            <div class="botao-lateral aleatorio">
+                <mat-icon aria-hidden="false" fontIcon="repeat"></mat-icon>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
