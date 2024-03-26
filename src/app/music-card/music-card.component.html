@@ -2,7 +2,6 @@
 
     <div class="container-card">
 
-
         <div class="header">
             <div class="botao-topo">
                 <mat-icon aria-hidden="false" fontIcon="share"></mat-icon>
@@ -13,27 +12,28 @@
         </div>
 
         <div class="imagem-musica">
-            <img src="../../assets/MusicCard/music1.jpg">
+            <img [src]="currentMusic.image">
         </div>
 
         <div class="infos">
-            <div class="titulo">Lofi Study</div>
-            <div class="banda">FasSounds</div>
+            <div class="titulo">{{currentMusic.name}}</div>
+            <div class="banda">{{currentMusic.artist}}</div>
         </div>
 
         <div class="music-spinner">
-            <audio [src]="currentMusic" id="player"></audio>
-            <progress #seekbar id="seekbar" value="0" max="1" style="width:400px;"
-                timeupdate="atualizarProgresso()"></progress>
+            <audio #player [src]="currentMusic.music" (timeupdate)="atualizarProgresso()"></audio>
+            <progress #seekbar value="0" max="1" style="width:400px;" 
+                (click)="changeProgress($event)" ></progress>
 
-               
+
         </div>
 
-        <div id="tempo">tempo</div>
+        <div id="tempo"></div>
 
         <div class="footer">
             <div class="botao-lateral repetir">
-                <mat-icon aria-hidden="false" fontIcon="shuffle"></mat-icon>
+                <mat-icon aria-hidden="false" fontIcon="shuffle"
+                    [class]="randomMusic ? 'active' : 'inactive'"></mat-icon>
             </div>
             <div class="container-botoes">
                 <div class="botao-footer change-music" (click)="previousMusic()">
@@ -46,8 +46,9 @@
                     <mat-icon aria-hidden="false" fontIcon="skip_next"></mat-icon>
                 </div>
             </div>
-            <div class="botao-lateral aleatorio">
-                <mat-icon aria-hidden="false" fontIcon="repeat"></mat-icon>
+            <div class="botao-lateral aleatorio" (click)="repeat()">
+                <mat-icon aria-hidden="false" fontIcon="repeat"
+                    [class]="repeatMusic ? 'active' : 'inactive'"></mat-icon>
             </div>
 
         </div>
